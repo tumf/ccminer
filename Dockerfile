@@ -12,6 +12,7 @@ RUN rpm -i http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/
 RUN yum install -y cuda
 
 RUN mkdir -p /usr/src \
+    && cd /usr/src \
     && git clone https://github.com/tumf/ccminer.git \
     && cd /usr/src/ccminer \
     && ./autogen.sh \
