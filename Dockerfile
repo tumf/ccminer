@@ -2,10 +2,11 @@ FROM centos:6
 MAINTAINER tumf <y.takahara@gmail.com>
 
 RUN yum install -y epel-release
-RUN yum groupinstall -y "Development Tools"
-RUN yum install -y wget curl git
+
+RUN yum install -y autoconf automake gcc gcc-c++
+RUN yum install -y wget git
 RUN yum install -y mpir mpir-devel
-RUN yum install -y openssl-devel curl-devel
+RUN yum install -y openssl curl openssl-devel curl-devel
 
 # install NVidia Cuda 6.5
 RUN rpm -i http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda-repo-rhel6-6-5-prod-6.5-19.x86_64.rpm
@@ -28,3 +29,6 @@ RUN ldconfig
 # add mine script
 ADD mine.sh mine
 RUN chmod +x /mine
+
+# cleanup
+RUN yum remove -y openssl-devel curl-devel mpir-devel autoconf automake gcc-c++ wget git
