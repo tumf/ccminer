@@ -20,3 +20,6 @@ RUN mkdir -p /usr/src \
     && make \
     && make install \
     && rm -rf /usr/src/ccminer
+
+RUN echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/nvidia-lib64.conf
+RUN ldconfig
