@@ -21,5 +21,10 @@ RUN mkdir -p /usr/src \
     && make install \
     && rm -rf /usr/src/ccminer
 
+# add path to libs
 RUN echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/nvidia-lib64.conf
 RUN ldconfig
+
+# add mine script
+ADD mine.sh mine
+RUN chmod +x /mine
